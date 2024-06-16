@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогнозування споживання електроенергії</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="./model1_pozniakov.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        table {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            margin: 20px auto;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #consumption {
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+            width: 80%;
+            max-width: 600px;
+            background-color: #e9f7ff;
+            border: 1px solid #b3d7ff;
+            border-radius: 5px;
+        }
+        .result {
+            font-size: 18px;
+            color: #0056b3;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Модель 1, варіант 3. Прогнозування споживання електроенергії</h1>
+    <p>Дані: <a href="https://archive.ics.uci.edu/ml/datasets/Power+consumption+of+Tetouan+city" target="_blank">Power consumption of Tetouan city</a></p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td>Temperature</td>
+                <td><input type="number" id="T" value="6.559"></td>
+            </tr>
+            <tr>
+                <td>Humidity</td>
+                <td><input type="number" id="H" value="73.8"></td>
+            </tr>
+            <tr>
+                <td>Wind Speed</td>
+                <td><input type="number" id="WS" value="0.083"></td>
+            </tr>
+            <tr>
+                <td>General diffuse flows</td>
+                <td><input type="number" id="GDF" value="0.051"></td>
+            </tr>
+            <tr>
+                <td>Diffuse flows</td>
+                <td><input type="number" id="DF" value="0.119"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="predict">Визначити енергоспоживання</button>
+    <div id="consumption">Йде завантаження моделі, зачекайте будь ласка</div>
+</body>
+</html>
